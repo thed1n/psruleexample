@@ -78,28 +78,29 @@ rule:
   includeLocal: true
   exclude:
     # Ignore these recommendations for this repo.
-    #- Azure.Resource.UseTags
-    #- Azure.ACR.ContentTrust
-    #- Azure.ResourceGroup.Name
+    - Azure.Resource.UseTags
+    - Azure.ACR.ContentTrust
+    - Azure.ResourceGroup.Name
     - Azure.VM.UseHybridUseBenefit # Should not be needed to explicitly declare hybrid benefit.
     #- Azure.NSG.LateralTraversal # Using FW in HUB to restric EW traffic
-    - Azure.ACR.ContentTrust
-    - Azure.AppGw.AvailabilityZone
-    - Azure.AppGw.MinInstance
-    - Azure.AppGwWAF.RuleGroups
-    - Azure.NSG.LateralTraversal
-    - Azure.PublicIP.AvailabilityZone
-    - Azure.Resource.UseTags
-    - Azure.ResourceGroup.Name
-    - Azure.Storage.BlobPublicAccess
-    - Azure.Storage.ContainerSoftDelete
-    - Azure.Storage.Firewall
-    - Azure.Storage.MinTLS
-    - Azure.Storage.SecureTransfer
-    - Azure.Storage.SoftDelete
-    - Azure.Storage.UseReplication
-    - Azure.Template.ParameterMetadata
-    - Azure.Template.UseDescriptions
-    - Azure.VNET.UseNSGs
-    - Org.Naming.Value
-    - Org.Tagging.Value
+    
+    # - Azure.ACR.ContentTrust
+    # - Azure.AppGw.AvailabilityZone
+    # - Azure.AppGw.MinInstance
+    # - Azure.AppGwWAF.RuleGroups
+    # - Azure.NSG.LateralTraversal
+    # - Azure.PublicIP.AvailabilityZone
+    # - Azure.Resource.UseTags
+    # - Azure.ResourceGroup.Name
+    # - Azure.Storage.BlobPublicAccess
+    # - Azure.Storage.ContainerSoftDelete
+    # - Azure.Storage.Firewall
+    # - Azure.Storage.MinTLS
+    # - Azure.Storage.SecureTransfer
+    # - Azure.Storage.SoftDelete
+    # - Azure.Storage.UseReplication
+    # - Azure.Template.ParameterMetadata
+    # - Azure.Template.UseDescriptions
+    # - Azure.VNET.UseNSGs
+    # - Org.Naming.Value
+    # - Org.Tagging.Value
