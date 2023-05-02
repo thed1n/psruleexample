@@ -1,0 +1,78 @@
+#
+# PSRule for Azure configuration
+#
+
+# Please see the documentation for all configuration options:
+# https://aka.ms/ps-rule-azure
+
+# Use rules from the following modules/
+include:
+  module:
+    - "PSRule.Rules.Azure"
+
+# Require a minimum version of modules that include referenced baseline.
+requires:
+  PSRule: "@pre >=2.4.1"
+  PSRule.Rules.Azure: "@pre >=1.19.2"
+
+output:
+  culture:
+    - "en-US"
+
+execution:
+  # Ignore warnings for resources and objects that don't have any rules.
+  notProcessedWarning: false
+
+configuration:
+  # Enable expansion for Bicep source files.
+  AZURE_BICEP_FILE_EXPANSION: true
+
+  # Expand Bicep module from Azure parameter files.
+  AZURE_PARAMETER_FILE_EXPANSION: true
+
+  # Set timeout for expanding Bicep source files.
+  AZURE_BICEP_FILE_EXPANSION_TIMEOUT: 30
+  #Examples to use Parameters instead of a parameter.json that doesn't work.
+  AZURE_PARAMETER_DEFAULTS:
+    landingzonename: "Integration"
+    subnetSize: "192.168.10.0./27"
+    location: "swedencentral"
+    enviroment: "dev"
+    certificateName: 'Wildcard2023'
+    company: 'freeze'
+
+
+
+
+input:
+  # By default, objects read from file using inputPath will be skipped if the file path has been ignored.
+  # When set to true, additionally objects with a source path that has been ignored will be skipped.
+  ignoreObjectSource: true
+
+  pathIgnore:
+    # Ignore common files that don't need analysis.
+    - "**/bicepconfig.json"
+    - "*.toml"
+    - "*.psd1"
+    - "*.md"
+    - "*.png"
+    - ".azuredevops/"
+    - ".github/"
+
+    # Exclude Bicep module files.
+    - "modules/**/*.bicep"
+
+    # Exclude JSON module files.
+    - "modules/**/*.json"
+
+    # Include test/main.test files from modules.
+    - "!modules/**/test/*.bicep"
+
+rule:
+  exclude:
+    # Ignore these recommendations for this repo.
+    - Azure.Resource.UseTags
+    - Azure.ACR.ContentTrust
+    - Azure.ResourceGroup.Name
+    - Azure.VM.UseHybridUseBenefit # Should not be needed to explicitly declare hybrid benefit.
+    #- Azure.NSG.LateralTraversal # Using FW in HUB to restric EW traffic
