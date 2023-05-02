@@ -12,8 +12,8 @@ include:
 
 # Require a minimum version of modules that include referenced baseline.
 requires:
-  PSRule: "@pre >=2.4.1"
-  PSRule.Rules.Azure: "@pre >=1.19.2"
+  PSRule: "@pre >=2.8.1"
+  PSRule.Rules.Azure: "@pre >=1.26.1"
 
 output:
   culture:
@@ -41,7 +41,12 @@ configuration:
     certificateName: 'Wildcard2023'
     company: 'freeze'
 
-
+# allows the type parameter to be used in custom rules.
+# https://azure.github.io/PSRule.Rules.Azure/customization/enforce-custom-tags/#binding-type
+binding:
+  targetType:
+  - 'resourceType'
+  - 'type'
 
 
 input:

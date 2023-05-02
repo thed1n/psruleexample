@@ -9,8 +9,5 @@ spec:
     - Microsoft.Network/publicIPAddresses
   condition:
     allOf:
-    # - name: '.'
-    #   greaterOrEquals: 1
-    # - name: '.'
-    - field: 'name'
-      match: '^pip-(prod|test|dev)-(sc|weu)-\d{3}$'
+      - name: .
+        match: '^pip-(prod|test|dev)-(sc|weu)-\d{3}$'
