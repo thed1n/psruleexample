@@ -63,6 +63,7 @@ input:
     - "*.png"
     - ".azuredevops/"
     - ".github/"
+    - ".ps-rule/"
 
     # Exclude Bicep module files.
     - "modules/**/*.bicep"
