@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.13.1.58284",
+      "templateHash": "13599809629813658538"
+    }
+  },
+  "parameters": {
+    "rgname": {
+      "type": "string",
+      "defaultValue": "rg-testnortheurope"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "northeurope"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/resourceGroups",
+      "apiVersion": "2021-04-01",
+      "name": "[parameters('rgname')]",
+      "location": "[parameters('location')]",
+      "tags": {
+        "env": "kanin"
+      }
+    }
+  ]
+}

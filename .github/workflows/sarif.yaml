@@ -17,7 +17,7 @@ jobs:
     - name: Run PSRule analysis
       uses: microsoft/ps-rule@v2.8.1
       with:
-        module: psrule.rules.azure
+        modules: psrule.rules.azure
         outputFormat: Sarif
         outputPath: reports/ps-rule-results.sarif
 
