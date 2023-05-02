@@ -1,0 +1,20 @@
+---
+# Synopsis: We require that enviroment is configured correctly
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: 'Org.Tagging.Value'
+  displayName: 'Tagging convention'
+spec:
+  # with:
+  #   - PSRule.Rules.Azure\Azure.Resource.SupportsTags
+  recommend: 'Add tagging to the resources that includes the enviroment prod/test/dev'
+  type: 
+    - 'Microsoft.Resources/resourceGroups'
+  condition:
+    allOf:
+      - in:
+          - 'prod'
+          - 'test'
+          - 'dev'
+        field: 'tags.env'

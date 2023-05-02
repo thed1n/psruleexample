@@ -1,0 +1,29 @@
+name: Analyze
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  oss:
+    name: Analyze with PSRule
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Run PSRule analysis
+      uses: microsoft/ps-rule@v2.8.1
+      with:
+        module: psrule.rules.azure
+        outputFormat: Sarif
+        outputPath: reports/ps-rule-results.sarif
+
+    - name: Upload results to security tab
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: reports/ps-rule-results.sarif

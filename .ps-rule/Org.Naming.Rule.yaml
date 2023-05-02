@@ -1,0 +1,16 @@
+---
+# Synopsis: Public IP must match our standard 'pip-{enviroment}-{region}-000'
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: 'Org.Naming.Value'
+spec:
+  type:
+    - Microsoft.Network/publicIPAddresses
+  condition:
+    allOf:
+    # - name: '.'
+    #   greaterOrEquals: 1
+    # - name: '.'
+    - field: 'name'
+      match: '^pip-(prod|test|dev)-(sc|weu)-\d{3}$'

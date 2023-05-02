@@ -69,6 +69,7 @@ input:
     - "!modules/**/test/*.bicep"
 
 rule:
+  includeLocal: true
   exclude:
     # Ignore these recommendations for this repo.
     - Azure.Resource.UseTags
