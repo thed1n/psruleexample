@@ -18,7 +18,8 @@ jobs:
   analyze:
     name: Analyze repository
     runs-on: ubuntu-latest
-    if: github.repository != 'Azure/PSRule.Rules.Azure-quickstart'
+    #env:
+    #  PSRULE_AZURE_BICEP_PATH: '/usr/local/bin/bicep' #if bicep is not able to be fetched
     steps:
       - name: Checkout
         uses: actions/checkout@v3
